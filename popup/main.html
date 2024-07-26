@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetHub Sync</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <h1>LeetHub Sync</h1>
+    <button id="sync-last-submission-button">Sync Last Submission</button>
+    <button id="sync-last-20-submissions-button">Sync Last 20 Submissions</button>
+    <button id="settings-button">
+        <img src="../images/settings_icon.png" alt="Settings">
+    </button>
+    <div id="message"></div>
+ 
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Update GitHub Config</h2>
+            <label for="github-token">GitHub Token:</label>
+            <input type="text" id="github-token" placeholder="Enter GitHub Token">
+            <br>
+            <label for="repo-url">Repository URL:</label>
+            <input type="text" id="repo-url" placeholder="Enter Repository URL">
+            <br>
+            <button id="update-config-button">Update Config</button>
+            <p id="update-message"></p>
+        </div>
+    </div>
+
+    <script src="../scripts/popup.js"></script>
+</body>
+</html>

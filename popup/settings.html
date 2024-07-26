@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LeetHub Sync - Settings</title>
+    <style>
+        body {
+            width: 300px;
+            font-family: Arial, sans-serif;
+        }
+        input {
+            margin: 10px;
+            padding: 10px;
+            width: calc(100% - 20px);
+        }
+        button {
+            margin: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Settings</h1>
+    <label for="github-token">GitHub Token:</label>
+    <input type="text" id="github-token">
+    <label for="repo-url">Repository URL:</label>
+    <input type="text" id="repo-url">
+    <button id="update-config-button">Update GitHub Config</button>
+    <div id="message"></div>
+    <script src="../scripts/settings.js"></script>
+</body>
+</html>
