@@ -26,8 +26,6 @@ const updateConfig = async (githubToken, repoUrl) => {
     });
 };
 
-
-
 // Fetch submissions from LeetCode
 const getSubmissions = async (offset = 0, limit = 30) => {
     const url = `https://leetcode.com/api/submissions/?offset=${offset}&limit=${limit}`;
@@ -130,8 +128,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
 });
 
-
-
 // Format the submission
 const formatSubmission = (submission) => {
     const submission_id = submission.id;
@@ -149,7 +145,6 @@ const formatDate = (timestamp) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
     return date.toLocaleString(undefined, options);
 };
-
 
 // Upload a single submission to GitHub
 const uploadSubmissionToGitHub = async (submission, token, repoUrl) => {
@@ -226,7 +221,6 @@ const uploadSubmissionToGitHub = async (submission, token, repoUrl) => {
         console.error('Error checking file existence or uploading file to GitHub:', error);
     }
 };
-
 
 // Upload the last 20 submissions to GitHub
 const uploadLast20SubmissionsToGitHub = async (submissions, token, repoUrl) => {
