@@ -1,20 +1,21 @@
 {
-    "manifest_version": 3,
-    "name": "LeetHub Sync",
-    "description": "Sync your Leetcode submissions to your Github repository",
-    "version": "1.0",
-    "permissions": [
-        "storage",
-        "cookies",
-        "activeTab",
-        "scripting"
-    ],
-    "background": {
-        "service_worker": "background.js"
-    },
-    "action": {
-      "default_popup": "popup/main.html",
-      "default_icon": "images/lh_icon.png"
-    }
+  "manifest_version": 3,
+  "name": "LeetHub Sync",
+  "description": "Sync your Leetcode submissions to your Github repository",
+  "version": "1.0",
+  "permissions": [
+      "storage",
+      "cookies",
+      "activeTab",
+      "scripting"
+  ],
+  "background": {
+      "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/main.html"
+  },
+  "icons": {
+    "48": "images/lh_icon.png"
   }
-  
+}
