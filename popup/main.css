@@ -4,7 +4,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     text-align: center;
-    min-width: 300px;
+    min-width: 350px;
 }
 
 h1 {
@@ -22,7 +22,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 2em;
+    font-size: 20em;
 }
 
 #settings-button {
