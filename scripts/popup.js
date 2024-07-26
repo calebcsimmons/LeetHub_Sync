@@ -36,7 +36,7 @@ document.getElementById('sync-last-20-submissions-button').addEventListener('cli
         }
 
         if (response && response.status === 'success') {
-            displayMessage('Successfully synced the last 20 submissions!', 'green');
+            displayMessage('Successfully synced the last 20 submissions!', 'lightgreen');
         } else if (response && response.status === 'error') {
             console.error('Error from background:', response.message);
             displayMessage(`Error: ${response.message}`, 'red');
