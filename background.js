@@ -46,7 +46,7 @@ const getSubmissions = async (offset = 0, limit = 30) => {
         }
     } catch (error) {
         console.error('Error fetching submissions:', error);
-        throw error; // Ensure the error is thrown so it can be caught in the message handler
+        throw error;
     }
 };
 
@@ -167,7 +167,7 @@ const uploadSubmissionToGitHub = async (submission, token, repoUrl) => {
         case 'javascript':
             fileExtension = 'js';
             break;
-        // Add more cases as needed
+        // Add all possible file types from Leetcode
         default:
             fileExtension = 'txt'; // Default to .txt if language is unknown
     }
