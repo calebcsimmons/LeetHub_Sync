@@ -5,51 +5,70 @@ body {
     box-sizing: border-box;
     text-align: center;
     min-width: 350px;
+    background-color: black;
 }
 
 h1 {
     font-size: 2.5em;
     margin: 20px 0;
+    color: white;
 }
 
-button {
+#sync-last-submission-button {
+    background-color: #007bff;
     width: 90%;
     max-width: 500px; /* Increased max-width for buttons */
     margin: 10px auto;
     padding: 10px;
-    background-color: #007bff;
-    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 20em;
+    font-size: 1.4em;
+}
+
+#sync-last-20-submissions-button {
+    background-color: #007bff;
+    width: 90%;
+    max-width: 500px; /* Increased max-width for buttons */
+    margin: 10px auto;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.4em;
 }
 
 #settings-button {
     position: absolute;
-    max-width: 3px;
-    background-color: white;
-    top: 2px;
-    right: 10%;
+    width: 40px; /* Set the button width to match the image size */
+    height: 30px; /* Set the button height to match the image size */
+    top: 5px;
+    right: 2%;
     cursor: pointer;
-
 }
 
 #settings-button img {
-    width: 24px; /* Adjust size if necessary */
-    height: 24px; /* Adjust size if necessary */
-    display: block; /* Ensure the image is displayed as a block */
+    width: 100%; /* Make the image stretch to the button's width */
+    height: 100%; /* Make the image stretch to the button's height */
+    display: block; /* Remove any extra space below the image */
 }
 
+#update-config-button {
+    background-color: #007bff;
+    width: 90%;
+    max-width: 350px; /* Increased max-width for buttons */
+    margin: 10px auto;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.4em;
 
-#settings-button img {
-    width: 24px;
-    height: 24px;
 }
 
 #message {
     width: 90%;
-    max-width: 500px; /* Increased max-width for message */
+    max-width: 500px; 
     margin: 10px auto;
     padding: 10px;
     background-color: lightgrey;
@@ -72,7 +91,7 @@ button {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: white;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
