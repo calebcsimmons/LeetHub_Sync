@@ -17,5 +17,11 @@
   },
   "icons": {
     "48": "images/lh_icon.png"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://leetcode.com/*"],
+      "js": ["scripts/content.js"]
+    }
+  ]
 }
