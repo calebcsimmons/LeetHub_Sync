@@ -27,7 +27,7 @@ const updateConfig = async (githubToken, repoUrl) => {
 };
 
 // Fetch submissions from LeetCode
-const getSubmissions = async (offset = 0, limit = 30) => {
+const getSubmissions = async (offset = 0, limit = 20) => {
     const url = `https://leetcode.com/api/submissions/?offset=${offset}&limit=${limit}`;
 
     try {
