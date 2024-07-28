@@ -58,7 +58,6 @@ const getSubmissions = async (offset = 0, limit = 20) => {
     }
 };
 
-
 // Handle messages from popup.js
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     console.log('Received message:', message); // Log received messages for debugging

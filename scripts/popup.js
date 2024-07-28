@@ -5,6 +5,31 @@ function displayMessage(message, color = 'black') {
     messageElement.style.color = color;
 }
 
+// Auto Submit Checkbox
+document.getElementById('auto-submit-checkbox').addEventListener('change', (event) => {
+    saveCheckboxState(event.target.checked);
+});
+
+// Set initial checkbox state
+setCheckboxState();
+
+// Save checkbox state
+function saveCheckboxState(isChecked) {
+    chrome.storage.sync.set({ autoSubmit: isChecked }, () => {
+        console.log('Auto Submit state saved:', isChecked);
+    });
+}
+
+// Retrieve and set checkbox state
+function setCheckboxState() {
+    chrome.storage.sync.get(['autoSubmit'], (result) => {
+        const autoSubmitCheckbox = document.getElementById('auto-submit-checkbox');
+        if (result.autoSubmit !== undefined) {
+            autoSubmitCheckbox.checked = result.autoSubmit;
+        }
+    });
+}
+
 // Sync Last Submission
 document.getElementById('sync-last-submission-button').addEventListener('click', () => {
     chrome.runtime.sendMessage({ action: 'syncLastSubmission' }, (response) => {
