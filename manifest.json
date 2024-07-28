@@ -5,8 +5,6 @@
   "version": "1.0",
   "permissions": [
       "storage",
-      "cookies",
-      "activeTab",
       "scripting"
   ],
   "background": {
