@@ -63,6 +63,7 @@ const getSubmissions = async (offset = 0, limit = 20) => {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     console.log('Received message:', message); // Log received messages for debugging
 
+    // Sync Last Submission
     if (message.action === 'syncLastSubmission') {
         getConfig().then(async (config) => {
             if (config) {
@@ -95,9 +96,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             console.error('Error fetching config:', error);
             sendResponse({ status: 'error', message: error.message });
         });
-        return true; // Keep the message channel open for async response
+        return true; 
+    }
     
-    } else if (message.action === 'syncLast20Submissions') {
+    // Sync Last 20 Submission
+    else if (message.action === 'syncLast20Submissions') {
         getConfig().then(async (config) => {
             if (config) {
                 const { GITHUB_TOKEN, REPO_URL } = config;
@@ -126,10 +129,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             console.error('Error fetching config:', error);
             sendResponse({ status: 'error', message: error.message });
         });
-        return true; // Keep the message channel open for async response
+        return true; 
+    } 
     
-    
-    } else if (message.action === 'updateConfig') {
+    // Update Github Configuration
+    else if (message.action === 'updateConfig') {
         const { githubToken, repoUrl } = message;
 
         if (githubToken && repoUrl) {
@@ -140,17 +144,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         } else {
             sendResponse({ status: 'error', message: 'GitHub Token and Repo URL are required.' });
         }
-        return true; // Keep the message channel open for async response
+        return true; 
     } else {
         sendResponse({ status: 'error', message: 'Unknown action.' });
-        return true; // Keep the message channel open for async response
+        return true; 
     }
 });
 
 // Format the submission
 const formatSubmission = (submission) => {
     const submission_id = submission.id;
-    const title = submission.title.replace(/[/\\?%*:|"<>]/g, '_'); // Replace invalid characters for file names
+    const title = submission.title.replace(/[/\\?%*:|"<>]/g, '_'); 
     const status = submission.status_display;
     const code = submission.code;
     const timestamp = formatDate(submission.timestamp * 1000); // Convert to milliseconds
@@ -169,7 +173,7 @@ const formatDate = (timestamp) => {
 const uploadSubmissionToGitHub = async (submission, token, repoUrl) => {
     const language = submission.lang.toLowerCase();
     const submission_id = submission.id;
-    const title = submission.title.replace(/[/\\?%*:|"<>]/g, '_'); // Replace invalid characters for file names
+    const title = submission.title.replace(/[/\\?%*:|"<>]/g, '_'); 
     
     // Determine file extension based on language
     let fileExtension;
@@ -186,7 +190,7 @@ const uploadSubmissionToGitHub = async (submission, token, repoUrl) => {
         case 'javascript':
             fileExtension = 'js';
             break;
-        // Add all possible file types from Leetcode
+        // Need to add all possible file types from Leetcode
         default:
             fileExtension = 'txt'; // Default to .txt if language is unknown
     }
