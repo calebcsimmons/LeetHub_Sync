@@ -5,6 +5,12 @@ function displayMessage(message, color = 'black') {
     messageElement.style.color = color;
 }
 
+// Auto Submit
+document.getElementById('auto-submit-checkbox').addEventListener('change', (event) => {
+    const isChecked = event.target.checked;
+    chrome.storage.local.set({ autoSubmit: isChecked });
+});
+
 // Sync Last Submission
 document.getElementById('sync-last-submission-button').addEventListener('click', () => {
     chrome.runtime.sendMessage({ action: 'syncLastSubmission' }, (response) => {
