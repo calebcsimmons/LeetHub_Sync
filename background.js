@@ -40,7 +40,15 @@ const getSubmissions = async (offset = 0, limit = 30) => {
         });
 
         if (response.ok) {
-            return await response.json();
+            const data = await response.json();
+            if (data && Array.isArray(data.submissions_dump)) {
+                // Sort submissions by ID in descending order to get the latest submissions first
+                data.submissions_dump.sort((a, b) => b.id - a.id);
+                return data.submissions_dump;
+            } else {
+                console.error("Unexpected data structure:", data);
+                return [];
+            }
         } else {
             throw new Error(`Failed to fetch data. Status code: ${response.status}`);
         }
@@ -50,6 +58,7 @@ const getSubmissions = async (offset = 0, limit = 30) => {
     }
 };
 
+
 // Handle messages from popup.js
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     console.log('Received message:', message); // Log received messages for debugging
@@ -58,14 +67,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         getConfig().then(async (config) => {
             if (config) {
                 const { GITHUB_TOKEN, REPO_URL } = config;
-
+    
                 try {
-                    const data = await getSubmissions();
-                    if (data && data.submissions_dump.length > 0) {
-                        const lastSubmission = data.submissions_dump[data.submissions_dump.length - 1];
+                    const submissions = await getSubmissions();
+                    
+                    if (submissions && submissions.length > 0) {
+                        // Sort submissions by ID in descending order to get the latest submission first
+                        submissions.sort((a, b) => b.id - a.id);
+                        const lastSubmission = submissions[0]; // The latest submission
                         const formattedOutput = formatSubmission(lastSubmission);
                         console.log('Last submission:', formattedOutput);
-
+    
                         await uploadSubmissionToGitHub(lastSubmission, GITHUB_TOKEN, REPO_URL);
                         sendResponse({ status: 'success', data: formattedOutput });
                     } else {
@@ -84,15 +96,20 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse({ status: 'error', message: error.message });
         });
         return true; // Keep the message channel open for async response
+    
     } else if (message.action === 'syncLast20Submissions') {
         getConfig().then(async (config) => {
             if (config) {
                 const { GITHUB_TOKEN, REPO_URL } = config;
-
+    
                 try {
-                    const data = await getSubmissions();
-                    if (data && data.submissions_dump.length > 0) {
-                        await uploadLast20SubmissionsToGitHub(data.submissions_dump, GITHUB_TOKEN, REPO_URL);
+                    const submissions = await getSubmissions();
+                    if (submissions && submissions.length > 0) {
+                        // Sort submissions by ID in descending order to get the latest submissions first
+                        submissions.sort((a, b) => b.id - a.id);
+                        const last20Submissions = submissions.slice(0, 20); // Get the latest 20 submissions
+    
+                        await uploadLast20SubmissionsToGitHub(last20Submissions, GITHUB_TOKEN, REPO_URL);
                         sendResponse({ status: 'success', data: 'Last 20 submissions uploaded to GitHub.' });
                     } else {
                         console.log('No submissions found.');
@@ -110,6 +127,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse({ status: 'error', message: error.message });
         });
         return true; // Keep the message channel open for async response
+    
+    
     } else if (message.action === 'updateConfig') {
         const { githubToken, repoUrl } = message;
 

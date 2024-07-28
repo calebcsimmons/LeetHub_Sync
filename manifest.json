@@ -4,7 +4,10 @@
   "description": "Sync your Leetcode submissions to your Github repository",
   "version": "1.0",
   "permissions": [
-      "storage"
+      "storage",
+      "cookies",
+      "activeTab",
+      "scripting"
   ],
   "background": {
       "service_worker": "background.js"
