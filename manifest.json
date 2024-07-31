@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "LeetHub Sync",
-  "description": "Sync your Leetcode submissions to your Github repository",
-  "version": "1.0",
+  "description": "A Chrome extension that saves your latest Leetcode submissions to your Github repository automatically!",
+  "version": "1.01",
   "permissions": [
       "storage",
       "scripting"
