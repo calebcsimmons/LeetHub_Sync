@@ -63,41 +63,47 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     console.log('Received message:', message); // Log received messages for debugging
 
     // Sync Last Submission
-    if (message.action === 'syncLastSubmission') {
-        getConfig().then(async (config) => {
-            if (config) {
-                const { GITHUB_TOKEN, REPO_URL } = config;
-    
-                try {
-                    const submissions = await getSubmissions();
-                    
-                    if (submissions && submissions.length > 0) {
-                        // Sort submissions by ID in descending order to get the latest submission first
-                        submissions.sort((a, b) => b.id - a.id);
-                        const lastSubmission = submissions[0]; // The latest submission
-                        const formattedOutput = formatSubmission(lastSubmission);
-                        console.log('Last submission:', formattedOutput);
-    
-                        await uploadSubmissionToGitHub(lastSubmission, GITHUB_TOKEN, REPO_URL);
-                        sendResponse({ status: 'success', data: formattedOutput });
-                    } else {
-                        console.log('No submissions found.');
-                        sendResponse({ status: 'success', data: 'No submissions found.' });
-                    }
-                } catch (error) {
-                    console.error('Error processing submissions:', error);
-                    sendResponse({ status: 'error', message: error.message });
+if (message.action === 'syncLastSubmission') {
+    getConfig().then(async (config) => {
+        if (config) {
+            const { GITHUB_TOKEN, REPO_URL } = config;
+
+            try {
+                if (!GITHUB_TOKEN || !REPO_URL) {
+                    console.error('GitHub token or repository URL is missing.\n Verify Settings!');
+                    sendResponse({ status: 'error', message: 'GitHub token or repository URL is missing.\n Verify Settings!' });
+                    return;
                 }
-            } else {
-                sendResponse({ status: 'error', message: 'Failed to load configuration.' });
+
+                const submissions = await getSubmissions();
+
+                if (submissions && submissions.length > 0) {
+                    // Sort submissions by ID in descending order to get the latest submission first
+                    submissions.sort((a, b) => b.id - a.id);
+                    const lastSubmission = submissions[0]; // The latest submission
+                    const formattedOutput = formatSubmission(lastSubmission);
+                    console.log('Last submission:', formattedOutput);
+
+                    await uploadSubmissionToGitHub(lastSubmission, GITHUB_TOKEN, REPO_URL);
+                    sendResponse({ status: 'success', data: formattedOutput });
+                } else {
+                    console.log('No submissions found.');
+                    sendResponse({ status: 'success', data: 'No submissions found.' });
+                }
+            } catch (error) {
+                console.error('Error processing submissions:', error);
+                sendResponse({ status: 'error', message: error.message });
             }
-        }).catch(error => {
-            console.error('Error fetching config:', error);
-            sendResponse({ status: 'error', message: error.message });
-        });
-        return true; 
-    }
-    
+        } else {
+            sendResponse({ status: 'error', message: 'Failed to load configuration.' });
+        }
+    }).catch(error => {
+        console.error('Error fetching config:', error);
+        sendResponse({ status: 'error', message: error.message });
+    });
+    return true; // Keep the message channel open for async response
+}
+
     // Sync Last 20 Submission
     else if (message.action === 'syncLast20Submissions') {
         getConfig().then(async (config) => {
@@ -169,7 +175,13 @@ const formatDate = (timestamp) => {
 };
 
 // Upload a single submission to GitHub
+// Upload a single submission to GitHub
 const uploadSubmissionToGitHub = async (submission, token, repoUrl) => {
+    if (!token || !repoUrl) {
+        console.error('Error: GitHub token or repository URL is missing.\n Verify Settings!');
+        return;
+    }
+
     const language = submission.lang.toLowerCase();
     const submission_id = submission.id;
     const title = submission.title.replace(/[/\\?%*:|"<>]/g, '_'); 
@@ -202,10 +214,14 @@ const uploadSubmissionToGitHub = async (submission, token, repoUrl) => {
     const fileName = `${submission_id}.${fileExtension}`;
     const fileContent = formatSubmission(submission);
 
-    // Extract owner and repo from the repo URL
-    const [owner, repo] = repoUrl.replace('https://github.com/', '').split('/');
-
     try {
+        // Extract owner and repo from the repo URL
+        const [owner, repo] = repoUrl.replace('https://github.com/', '').split('/');
+        if (!owner || !repo) {
+            console.error('Error: Invalid GitHub repository URL. Could not extract owner and repository.');
+            return; // Exit the function if repoUrl is not valid
+        }
+
         // Check if the file already exists
         const checkResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/submissions/${title}/${fileName}`, {
             method: 'GET',
@@ -234,7 +250,7 @@ const uploadSubmissionToGitHub = async (submission, token, repoUrl) => {
             if (uploadResponse.ok) {
                 console.log('File uploaded to GitHub:', `submissions/${title}/${fileName}`);
             } else {
-                console.log(`Failed to upload file. Status code: ${uploadResponse.status}`);
+                console.error(`Failed to upload file. Status code: ${uploadResponse.status}`);
                 const errorData = await uploadResponse.json();
                 console.error('Error details:', errorData);
             }
@@ -248,6 +264,7 @@ const uploadSubmissionToGitHub = async (submission, token, repoUrl) => {
         console.error('Error checking file existence or uploading file to GitHub:', error);
     }
 };
+
 
 // Upload the last 20 submissions to GitHub
 const uploadLast20SubmissionsToGitHub = async (submissions, token, repoUrl) => {

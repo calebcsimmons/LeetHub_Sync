@@ -114,7 +114,7 @@ const closeButton = document.querySelector('.close');
 
 settingsButton.addEventListener('click', () => {
     settingsModal.style.display = 'block';
-    settingsModal.style.top = `${window.scrollY}px`;
+    settingsModal.style.top = `${window.scrollY}px`; // Align with the current scroll position
 });
 
 closeButton.addEventListener('click', () => {
