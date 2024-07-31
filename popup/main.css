@@ -23,7 +23,7 @@ label[for="auto-submit-checkbox"] {
 #sync-last-submission-button {
     background-color: #007bff;
     width: 90%;
-    max-width: 500px; /* Increased max-width for buttons */
+    max-width: 500px; 
     margin: 10px auto;
     padding: 10px;
     border: none;
@@ -35,7 +35,7 @@ label[for="auto-submit-checkbox"] {
 #sync-last-20-submissions-button {
     background-color: #007bff;
     width: 90%;
-    max-width: 500px; /* Increased max-width for buttons */
+    max-width: 500px; 
     margin: 10px auto;
     padding: 10px;
     border: none;
