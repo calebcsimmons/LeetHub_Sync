@@ -173,26 +173,31 @@ const uploadSubmissionToGitHub = async (submission, token, repoUrl) => {
     const language = submission.lang.toLowerCase();
     const submission_id = submission.id;
     const title = submission.title.replace(/[/\\?%*:|"<>]/g, '_'); 
-    
+
+    // Dictionary for file extensions based on language
+    const languageExtensions = {
+        python: 'py',
+        cpp: 'cpp',
+        csharp: 'cs',
+        ruby: 'rb',
+        java: 'java',
+        javascript: 'js',
+        swift: 'swift',
+        go: 'go',
+        scala: 'scala',
+        kotlin: 'kt',
+        rust: 'rs',
+        php: 'php',
+        typescript: 'ts',
+        racket: 'rkt',
+        erlang: 'erl',
+        elixir: 'ex',
+        dart: 'dart',
+        sql: 'sql'
+    };
+
     // Determine file extension based on language
-    let fileExtension;
-    switch (language) {
-        case 'python':
-            fileExtension = 'py';
-            break;
-        case 'cpp':
-            fileExtension = 'cpp';
-            break;
-        case 'java':
-            fileExtension = 'java';
-            break;
-        case 'javascript':
-            fileExtension = 'js';
-            break;
-        // Need to add all possible file types from Leetcode
-        default:
-            fileExtension = 'txt'; // Default to .txt if language is unknown
-    }
+    const fileExtension = languageExtensions[language] || 'txt'; // Default to .txt if language is unknown
 
     const fileName = `${submission_id}.${fileExtension}`;
     const fileContent = formatSubmission(submission);
@@ -213,7 +218,7 @@ const uploadSubmissionToGitHub = async (submission, token, repoUrl) => {
             console.log(`Submission ${fileName} already exists. Skipping upload.`);
             return; // Skip upload if file already exists
         } else if (checkResponse.status === 404) {
-            // File does not exist, proceed with upload
+            // If file does not exist, proceed with upload
             const uploadResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/submissions/${title}/${fileName}`, {
                 method: 'PUT',
                 headers: {
