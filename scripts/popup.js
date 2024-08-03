@@ -3,7 +3,7 @@ function initializeMessage() {
     const messageElement = document.getElementById('message');
     if (messageElement) {
         messageElement.textContent = 'Logger window...'; // Default message
-        messageElement.style.color = 'gray'; // Default color
+        messageElement.style.color = 'gray';
     } else {
         console.error('Message element not found');
     }
