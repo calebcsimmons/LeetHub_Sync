@@ -1,9 +1,27 @@
-// Utility function to display messages
+// Utility function to initialize and display messages
+function initializeMessage() {
+    const messageElement = document.getElementById('message');
+    if (messageElement) {
+        messageElement.textContent = 'Logger window...'; // Default message
+        messageElement.style.color = 'gray'; // Default color
+    } else {
+        console.error('Message element not found');
+    }
+}
+
+// Utility function to display messages with HTML content
 function displayMessage(message, color = 'black') {
     const messageElement = document.getElementById('message');
-    messageElement.textContent = message;
-    messageElement.style.color = color;
+    if (messageElement) {
+        messageElement.innerHTML = message.replace(/\n/g, '<br>'); // Convert new lines to <br>
+        messageElement.style.color = color;
+    } else {
+        console.error('Message element not found');
+    }
 }
+
+// Initialize the default message when the page loads
+document.addEventListener('DOMContentLoaded', initializeMessage);
 
 // Auto Submit Checkbox
 document.getElementById('auto-submit-checkbox').addEventListener('change', (event) => {
@@ -26,6 +44,9 @@ function setCheckboxState() {
         const autoSubmitCheckbox = document.getElementById('auto-submit-checkbox');
         if (result.autoSubmit !== undefined) {
             autoSubmitCheckbox.checked = result.autoSubmit;
+        }
+        if (result.autoSubmit == true) {
+            displayMessage('Auto Submit Enabled.<br>Click Submit on Leetcode for auto sync', 'green');
         }
     });
 }
