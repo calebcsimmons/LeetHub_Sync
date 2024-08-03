@@ -166,11 +166,26 @@ document.getElementById('sync-last-20-submissions-button').addEventListener('cli
 // Update Config
 document.getElementById('update-config-button').addEventListener('click', () => {
     const githubToken = document.getElementById('github-token').value.trim();
-    const repoUrl = document.getElementById('repo-url').value.trim();
+    let repoUrl = document.getElementById('repo-url').value.trim();
+        if (repoUrl.endsWith('.git')) {
+            repoUrl = repoUrl.slice(0,-4)
+        }
     const updateMessage = document.getElementById('update-message');
 
-    if (githubToken && repoUrl) {
-        chrome.runtime.sendMessage({ action: 'updateConfig', githubToken, repoUrl }, (response) => {
+    chrome.storage.local.get(['GITHUB_TOKEN', 'REPO_URL'], (result) => {
+        const existingToken = result.GITHUB_TOKEN || '';
+        const existingRepoUrl = result.REPO_URL || '';
+
+        if (!githubToken && !repoUrl) {
+            updateMessage.textContent = 'Please enter at least one of GitHub Token or Repo URL.';
+            updateMessage.style.color = 'red';
+            return;
+        }
+
+        const newToken = githubToken || existingToken;
+        const newRepoUrl = repoUrl || existingRepoUrl;
+
+        chrome.runtime.sendMessage({ action: 'updateConfig', githubToken: newToken, repoUrl: newRepoUrl }, (response) => {
             if (chrome.runtime.lastError) {
                 console.error('Error sending message:', chrome.runtime.lastError);
                 updateMessage.textContent = `Error: ${chrome.runtime.lastError.message}`;
@@ -180,8 +195,18 @@ document.getElementById('update-config-button').addEventListener('click', () => 
 
             if (response.status === 'success') {
                 console.log('Response from background:', response.data);
-                updateMessage.textContent = 'Configuration updated successfully!';
-                updateMessage.style.color = 'green';
+
+                if (githubToken && !repoUrl) {
+                    updateMessage.textContent = 'GitHub Token updated successfully!';
+                    updateMessage.style.color = 'green';
+                } else if (!githubToken && repoUrl) {
+                    updateMessage.textContent = 'GitHub Repository URL updated successfully!';
+                    updateMessage.style.color = 'green';
+                } else {
+                    updateMessage.textContent = 'Configuration updated successfully!';
+                    updateMessage.style.color = 'green';
+                }
+
                 setTimeout(() => {
                     settingsModal.style.display = 'none';
                     updateMessage.textContent = '';
@@ -192,11 +217,9 @@ document.getElementById('update-config-button').addEventListener('click', () => 
                 updateMessage.style.color = 'red';
             }
         });
-    } else {
-        updateMessage.textContent = 'Please enter both GitHub Token and Repo URL.';
-        updateMessage.style.color = 'red';
-    }
+    });
 });
+
 
 // Settings modal
 const settingsModal = document.getElementById('settings-modal');

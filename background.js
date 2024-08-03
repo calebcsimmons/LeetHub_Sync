@@ -15,10 +15,6 @@ const getConfig = async () => {
 // Update configuration values in chrome.storage.local
 const updateConfig = async (githubToken, repoUrl) => {
     
-    if (repoUrl.endsWith('.git')) { // Remove .git from the end of the repoUrl if present
-        repoUrl = repoUrl.slice(0, -4);
-    }
-    
     return new Promise((resolve, reject) => {
         chrome.storage.local.set({ GITHUB_TOKEN: githubToken, REPO_URL: repoUrl }, () => {
             if (chrome.runtime.lastError) {
@@ -257,7 +253,7 @@ const uploadSubmissionToGitHub = async (submission, token, repoUrl) => {
                 const errorData = await uploadResponse.json();
                 console.error('Error details:', errorData);
             }
-            
+
         } else {
             // Handle other potential errors
             console.error(`Failed to check file existence. Status code: ${checkResponse.status}`);
