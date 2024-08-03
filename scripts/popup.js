@@ -320,7 +320,7 @@ const closeSettingsModal = () => {
     modal.style.display = 'none'; // Hide the modal
 };
 
-// Event listener for the settings button (replace with your actual button ID)
+// Event listener for the settings button
 document.getElementById('settings-button').addEventListener('click', openSettingsModal);
 
 // Event listener for the close button in the modal

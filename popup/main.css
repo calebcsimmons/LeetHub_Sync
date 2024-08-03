@@ -146,5 +146,5 @@ label[for="auto-sync-checkbox"] {
     right: 5px;
     transform: translateY(-50%);
     cursor: pointer;
-    font-size: 18px; /* Adjust size as needed */
+    font-size: 18px;
 }
