@@ -167,21 +167,23 @@ document.getElementById('sync-last-20-submissions-button').addEventListener('cli
 document.getElementById('update-config-button').addEventListener('click', () => {
     const githubToken = document.getElementById('github-token').value.trim();
     let repoUrl = document.getElementById('repo-url').value.trim();
-        if (repoUrl.endsWith('.git')) {
-            repoUrl = repoUrl.slice(0,-4)
-        }
+    if (repoUrl.endsWith('.git')) {
+        repoUrl = repoUrl.slice(0, -4);
+    }
     const updateMessage = document.getElementById('update-message');
 
     chrome.storage.local.get(['GITHUB_TOKEN', 'REPO_URL'], (result) => {
         const existingToken = result.GITHUB_TOKEN || '';
         const existingRepoUrl = result.REPO_URL || '';
 
+        // Ensure at least one field is provided
         if (!githubToken && !repoUrl) {
             updateMessage.textContent = 'Please enter at least one of GitHub Token or Repo URL.';
             updateMessage.style.color = 'red';
             return;
         }
 
+        // Determine the new values
         const newToken = githubToken || existingToken;
         const newRepoUrl = repoUrl || existingRepoUrl;
 
@@ -220,6 +222,39 @@ document.getElementById('update-config-button').addEventListener('click', () => 
     });
 });
 
+// Function to toggle token visibility
+document.getElementById('toggle-token-visibility').addEventListener('click', () => {
+    const githubTokenInput = document.getElementById('github-token');
+    const isVisible = githubTokenInput.dataset.visible === 'true';
+
+    if (isVisible) {
+        // Switch to masked
+        githubTokenInput.value = '*'.repeat(githubTokenInput.dataset.fullToken.length);
+        document.getElementById('toggle-token-visibility').textContent = '👁️';
+        githubTokenInput.dataset.visible = 'false';
+    } else {
+        // Switch to visible
+        githubTokenInput.value = githubTokenInput.dataset.fullToken;
+        document.getElementById('toggle-token-visibility').textContent = '🙈';
+        githubTokenInput.dataset.visible = 'true';
+    }
+});
+
+// Restore the visibility state on page load
+document.addEventListener('DOMContentLoaded', () => {
+    chrome.storage.local.get('tokenVisible', (result) => {
+        const tokenInput = document.getElementById('github-token');
+        const toggleIcon = document.getElementById('toggle-token-visibility');
+
+        if (result.tokenVisible) {
+            tokenInput.type = 'text';
+            toggleIcon.textContent = '👁️'; // Show the token
+        } else {
+            tokenInput.type = 'password';
+            toggleIcon.textContent = '🙈'; // Hide the token
+        }
+    });
+});
 
 // Settings modal
 const settingsModal = document.getElementById('settings-modal');
@@ -240,3 +275,54 @@ window.addEventListener('click', (event) => {
         settingsModal.style.display = 'none';
     }
 });
+
+// Function to load settings from storage and populate the modal
+const loadSettings = () => {
+    chrome.storage.local.get(['GITHUB_TOKEN', 'REPO_URL'], (result) => {
+        const githubTokenInput = document.getElementById('github-token');
+        const repoUrlInput = document.getElementById('repo-url');
+        const toggleVisibilityIcon = document.getElementById('toggle-token-visibility');
+
+        // Set repository URL if available
+        if (result.REPO_URL) {
+            repoUrlInput.value = result.REPO_URL;
+        }
+
+        // Set GitHub token if available
+        if (result.GITHUB_TOKEN) {
+            githubTokenInput.dataset.fullToken = result.GITHUB_TOKEN;
+            // Display token with asterisks initially
+            const maskedToken = '*'.repeat(result.GITHUB_TOKEN.length);
+            githubTokenInput.value = maskedToken;
+            // Set default visibility to false (hidden)
+            githubTokenInput.dataset.visible = 'false';
+            
+        }
+    });
+};
+
+// Function to get the unmasked token value
+const getUnmaskedToken = () => {
+    const githubTokenInput = document.getElementById('github-token');
+    return githubTokenInput.value.trim();
+};
+
+// Function to open the settings modal
+const openSettingsModal = () => {
+    loadSettings(); // Load and set stored values
+    const modal = document.getElementById('settings-modal');
+    modal.style.display = 'block'; // Show the modal
+};
+
+// Function to close the settings modal
+const closeSettingsModal = () => {
+    const modal = document.getElementById('settings-modal');
+    modal.style.display = 'none'; // Hide the modal
+};
+
+// Event listener for the settings button (replace with your actual button ID)
+document.getElementById('settings-button').addEventListener('click', openSettingsModal);
+
+// Event listener for the close button in the modal
+document.querySelector('#settings-modal .close').addEventListener('click', closeSettingsModal);
+

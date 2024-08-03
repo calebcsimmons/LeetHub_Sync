@@ -129,3 +129,22 @@ label[for="auto-sync-checkbox"] {
         width: 95%;
     }
 }
+
+.token-container {
+    position: relative;
+    display: inline-block;
+}
+
+#github-token {
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px; /* Adjust size as needed */
+}

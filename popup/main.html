@@ -24,7 +24,10 @@
             <span class="close">&times;</span>
             <h2>Update GitHub Config</h2>
             <label for="github-token">GitHub Token:</label>
-            <input type="text" id="github-token" placeholder="Enter GitHub Token">
+            <div class="token-container">
+                <input type="text" id="github-token" placeholder="Enter GitHub Token">
+                <span id="toggle-token-visibility" class="eye-icon">🙈</span>
+            </div>
             <br>
             <label for="repo-url">Repository URL:</label>
             <input type="text" id="repo-url" placeholder="Enter Repository URL">
@@ -33,6 +36,7 @@
             <p id="update-message"></p>
         </div>
     </div>
+
     
     <script src="../scripts/popup.js"></script>
 </body>
