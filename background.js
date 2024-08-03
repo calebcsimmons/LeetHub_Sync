@@ -14,6 +14,11 @@ const getConfig = async () => {
 
 // Update configuration values in chrome.storage.local
 const updateConfig = async (githubToken, repoUrl) => {
+    // Remove .git from the end of the repoUrl if present
+    if (repoUrl.endsWith('.git')) {
+        repoUrl = repoUrl.slice(0, -4);
+    }
+    
     return new Promise((resolve, reject) => {
         chrome.storage.local.set({ GITHUB_TOKEN: githubToken, REPO_URL: repoUrl }, () => {
             if (chrome.runtime.lastError) {
