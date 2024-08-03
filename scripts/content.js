@@ -3,11 +3,11 @@
 
 // Check the Auto Submit state
 const checkAutoSubmitAndSync = () => {
-    chrome.storage.sync.get(['autoSubmit'], (result) => {
-        // console.log('Auto Submit checkbox state:', result.autoSubmit);
+    chrome.storage.sync.get(['autosync'], (result) => {
+        // console.log('Auto Submit checkbox state:', result.autosync);
         
-        if (result.autoSubmit) {
-            console.log('Auto Submit is enabled. LeetHub Sync now syncing last submission.');
+        if (result.autosync) {
+            console.log('Auto Sync is enabled. LeetHub Sync now syncing last submission.');
             chrome.runtime.sendMessage({ action: 'syncLastSubmission' }, (response) => {
                 console.log('Response from background script:', response);
             });

@@ -23,9 +23,16 @@ function displayMessage(message, color = 'black') {
 // Initialize the default message when the page loads
 document.addEventListener('DOMContentLoaded', initializeMessage);
 
-// Auto Submit Checkbox
-document.getElementById('auto-submit-checkbox').addEventListener('change', (event) => {
+// Auto Sync Checkbox
+document.getElementById('auto-sync-checkbox').addEventListener('change', (event) => {
     saveCheckboxState(event.target.checked);
+    if (event.target.checked == true) {
+        displayMessage('Auto Sync Enabled.<br>Click Submit on Leetcode for auto sync', 'green')
+    }
+    else {
+        displayMessage('Auto Sync Disabled', 'gray')
+    }
+
 });
 
 // Set initial checkbox state
@@ -33,20 +40,20 @@ setCheckboxState();
 
 // Save checkbox state
 function saveCheckboxState(isChecked) {
-    chrome.storage.sync.set({ autoSubmit: isChecked }, () => {
-        console.log('Auto Submit state saved:', isChecked);
+    chrome.storage.sync.set({ autoSync: isChecked }, () => {
+        console.log('Auto Sync state saved:', isChecked);
     });
 }
 
 // Retrieve and set checkbox state
 function setCheckboxState() {
-    chrome.storage.sync.get(['autoSubmit'], (result) => {
-        const autoSubmitCheckbox = document.getElementById('auto-submit-checkbox');
-        if (result.autoSubmit !== undefined) {
-            autoSubmitCheckbox.checked = result.autoSubmit;
+    chrome.storage.sync.get(['autoSync'], (result) => {
+        const autoSyncCheckbox = document.getElementById('auto-sync-checkbox');
+        if (result.autoSync !== undefined) {
+            autoSyncCheckbox.checked = result.autoSync;
         }
-        if (result.autoSubmit == true) {
-            displayMessage('Auto Submit Enabled.<br>Click Submit on Leetcode for auto sync', 'green');
+        if (result.autoSync == true) {
+            displayMessage('Auto Sync Enabled.<br>Click Submit on Leetcode for auto sync', 'green');
         }
     });
 }
