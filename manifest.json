@@ -4,11 +4,15 @@
   "description": "A Chrome extension that saves your latest Leetcode submissions to your Github repository automatically!",
   "version": "1.01",
   "permissions": [
-      "storage",
-      "scripting"
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://leetcode.com/*"
   ],
   "background": {
-      "service_worker": "background.js"
+    "service_worker": "background.js"
   },
   "action": {
     "default_popup": "popup/main.html"

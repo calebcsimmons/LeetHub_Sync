@@ -30,45 +30,109 @@ function setCheckboxState() {
     });
 }
 
-// Sync Last Submission
-document.getElementById('sync-last-submission-button').addEventListener('click', () => {
-    chrome.runtime.sendMessage({ action: 'syncLastSubmission' }, (response) => {
-        if (chrome.runtime.lastError) {
-            console.error('Error sending message:', chrome.runtime.lastError);
-            displayMessage(`Error: ${chrome.runtime.lastError.message}`, 'red');
+// Check if the user is on the LeetCode website and logged in
+const checkLeetCodeTab = (callback) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        if (tabs.length === 0) {
+            console.error('No active tab found');
+            displayMessage('No active tab found.', 'red');
             return;
         }
 
-        if (response && response.status === 'success') {
-            displayMessage('Successfully synced the last submission!', 'green');
-        } else if (response && response.status === 'error') {
-            console.error('Error from background:', response.message);
-            displayMessage(`Error: ${response.message}`, 'red');
-        } else {
-            console.error('Unexpected response:', response);
-            displayMessage('Unexpected response format.', 'red');
+        const tab = tabs[0];
+        console.log('Active tab:', tab);  // Log the active tab details
+
+        if (!tab.url) {
+            console.error('Tab URL is undefined');
+            displayMessage('Tab URL is undefined.', 'red');
+            return;
         }
+
+        let url;
+        try {
+            url = new URL(tab.url);
+        } catch (e) {
+            console.error('Invalid URL:', tab.url);
+            displayMessage('Invalid URL.', 'red');
+            return;
+        }
+
+        if (!url.hostname.endsWith('leetcode.com')) {
+            console.error('Not on LeetCode website:', url.hostname);
+            displayMessage('Please navigate to the LeetCode website.', 'red');
+            return;
+        }
+
+        // Inject script to check if the user is logged in
+        chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: () => {
+                // Check if the "Sign in" button exists
+                return !!document.querySelector('#navbar_sign_in_button');
+            }
+        }, (results) => {
+            if (chrome.runtime.lastError || !results || results.length === 0) {
+                console.error('Error injecting script:', chrome.runtime.lastError);
+                displayMessage(`Error: ${chrome.runtime.lastError.message}`, 'red');
+                return;
+            }
+
+            const isNotLoggedIn = results[0].result;
+            if (isNotLoggedIn) {
+                console.error('User not logged into LeetCode.');
+                displayMessage('Error: Please login to LeetCode.', 'red');
+                return;
+            }
+
+            callback();
+        });
+    });
+};
+
+
+// Sync Last Submission
+document.getElementById('sync-last-submission-button').addEventListener('click', () => {
+    checkLeetCodeTab(() => {
+        chrome.runtime.sendMessage({ action: 'syncLastSubmission' }, (response) => {
+            if (chrome.runtime.lastError) {
+                console.error('Error sending message:', chrome.runtime.lastError);
+                displayMessage(`Error: ${chrome.runtime.lastError.message}`, 'red');
+                return;
+            }
+            
+            if (response && response.status === 'success') {
+                displayMessage('Successfully synced the last submission!', 'green');
+            } else if (response && response.status === 'error') {
+                console.error('Error from background:', response.message);
+                displayMessage(`Error: ${response.message}`, 'red');
+            } else {
+                console.error('Unexpected response:', response);
+                displayMessage('Unexpected response format.', 'red');
+            }
+        });
     });
 });
 
 // Sync Last 20 Submissions
 document.getElementById('sync-last-20-submissions-button').addEventListener('click', () => {
-    chrome.runtime.sendMessage({ action: 'syncLast20Submissions' }, (response) => {
-        if (chrome.runtime.lastError) {
-            console.error('Error sending message:', chrome.runtime.lastError);
-            displayMessage(`Error: ${chrome.runtime.lastError.message}`, 'red');
-            return;
-        }
+    checkLeetCodeTab(() => {
+        chrome.runtime.sendMessage({ action: 'syncLast20Submissions' }, (response) => {
+            if (chrome.runtime.lastError) {
+                console.error('Error sending message:', chrome.runtime.lastError);
+                displayMessage(`Error: ${chrome.runtime.lastError.message}`, 'red');
+                return;
+            }
 
-        if (response && response.status === 'success') {
-            displayMessage('Successfully synced the last 20 submissions!', 'green');
-        } else if (response && response.status === 'error') {
-            console.error('Error from background:', response.message);
-            displayMessage(`Error: ${response.message}`, 'red');
-        } else {
-            console.error('Unexpected response:', response);
-            displayMessage('Unexpected response format.', 'red');
-        }
+            if (response && response.status === 'success') {
+                displayMessage('Successfully synced the last 20 submissions!', 'green');
+            } else if (response && response.status === 'error') {
+                console.error('Error from background:', response.message);
+                displayMessage(`Error: ${response.message}`, 'red');
+            } else {
+                console.error('Unexpected response:', response);
+                displayMessage('Unexpected response format.', 'red');
+            }
+        });
     });
 });
 
