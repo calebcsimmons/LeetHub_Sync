@@ -1,5 +1,4 @@
 .env
 config.json
 *.DS_Store
-LeetHub_Sync_Privacy_Policy.docx
-assets
+assets/
