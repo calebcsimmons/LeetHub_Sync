@@ -67,3 +67,4 @@
 Planned Features and Fixes
 - Sync skipped message for already synced submissions.
 - Clear and concise error messages for troubleshooting.
+- Add Help Icon to direct users to README.md page
