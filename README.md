@@ -19,13 +19,13 @@
 ## Installation and Setup
 
 1. **Install in Chrome Browser:**
-- Navigate to the Chrome Web Store and add LeetHub Sync to Chrome!
+- Navigate to the Chrome Web Store and search for [LeetHub Sync](https://chromewebstore.google.com/detail/leethub-sync/lgpbjdbepciblkallimlmjajfioghdde?hl=en-US&utm_source=ext_sidebar).
+- Click the "Add to Chrome" button!
    
-   https://chromewebstore.google.com/detail/leethub-sync/lgpbjdbepciblkallimlmjajfioghdde?hl=en-US&utm_source=ext_sidebar
 
 2. **Configure Settings:**
     - Click on the settings icon.
-    - Generate a Github Token (https://github.com/settings/tokens)
+    - Login to Github and generate a [Github Token](https://github.com/settings/tokens).
     - Enter your GitHub Token and desired Github Repository URL in the settings modal.
     - Click "Update Configuration" to save your settings. <br><img src="images/settings_modal.png" alt="LeetHub Sync Settings Modal" width="220"/>
 
