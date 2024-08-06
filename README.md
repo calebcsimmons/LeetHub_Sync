@@ -28,8 +28,8 @@
    
 3. **Configure Settings:**
     - Click on the settings icon.
-    - Enter your GitHub Token and Repository URL.
-    - Ensure the Github Repository URL.
+    - Generate a Github Token (https://github.com/settings/tokens)
+    - Enter your GitHub Token and desired Github Repository URL in the settings modal.
     - Click "Update Configuration" to save your settings.
       
 4. **Sync Submissions:**
