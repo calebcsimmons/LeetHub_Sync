@@ -1,6 +1,6 @@
 # LeetHub Sync Chrome Extension
 
-![LeetCode Submission Syncer](images/lh_icon.png)
+![LeetHub Sync](images/lh_icon.png)
 
 ## Overview
 
@@ -31,6 +31,7 @@
     - Generate a Github Token (https://github.com/settings/tokens)
     - Enter your GitHub Token and desired Github Repository URL in the settings modal.
     - Click "Update Configuration" to save your settings.
+    <img src="images/settings_modal.png" alt="LeetHub Settings Modal" width="200"/>
       
 4. **Sync Submissions:**
     - Use the "Sync Last Submission" button to sync your latest LeetCode submission.
