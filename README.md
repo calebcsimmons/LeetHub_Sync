@@ -65,6 +65,5 @@
 
 ## RoadMap
 Planned Features and Fixes
-- Sync skipped message for already synced submissions.
-- Clear and concise error messages for troubleshooting.
-- Add Help Icon to direct users to README.md page
+
+See [Milestones](https://github.com/calebcsimmons/LeetHub_Sync/milestones) for enhancements and bug fixes that are planned for the next release!
