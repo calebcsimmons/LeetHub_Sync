@@ -22,6 +22,7 @@ All notable changes to this project will be documented in this file.
 - Automatic file organization based on programming language.
 - Popup status messages for sync operations.
 - Settings validation for repository URL.
+- Auto hide feature of GitHub token.
 
 ### Fixed
 - Improved error handling for CORS issues.
