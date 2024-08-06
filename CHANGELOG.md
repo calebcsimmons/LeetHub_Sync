@@ -11,7 +11,7 @@ All notable changes to this project will be documented in this file.
 - Settings page for configuring GitHub Token and Repository URL.
 - Error handling and messaging for sync operations.
 
-## [1.0.1] - TBD
+## [1.1.0] - TBD
 
 #### Added
 - Auto Sync feature for automated syncing upon LeetCode submission.
