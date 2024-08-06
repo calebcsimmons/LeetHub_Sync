@@ -30,12 +30,12 @@
     - Click on the settings icon.
     - Generate a Github Token (https://github.com/settings/tokens)
     - Enter your GitHub Token and desired Github Repository URL in the settings modal.
-    - Click "Update Configuration" to save your settings. <br><img src="images/settings_modal.png" alt="LeetHub Settings Modal" width="220"/>
+    - Click "Update Configuration" to save your settings. <br><img src="images/settings_modal.png" alt="LeetHub Sync Settings Modal" width="220"/>
       
 4. **Sync Submissions:**
     - Use the "Sync Last Submission" button to sync your latest LeetCode submission.
     - Use the "Sync Last 20 Submissions" button to sync your most recent 20 submissions.
-    - Enable "Auto Sync" for automatic syncing when the LeetCode "submit" button is clicked!
+    - Enable "Auto Sync" for automatic syncing when the LeetCode "submit" button is clicked! <br><img src="images/main_GUI.png" alt="LeetHub Sync Main GUI" width="220"/>
       
 5. **View Status:** The popup will display success or error messages based on the sync status.
 
