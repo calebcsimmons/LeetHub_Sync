@@ -16,27 +16,33 @@
 - **Automatic File Organization:** Submissions are saved in directories based on the problem title and programming language used.
 - **Error Handling:** Clear and concise error messages to help you troubleshoot issues.
 
-## Installation
+## Installation and Setup
 
-1. Navigate to the Chrome Web Store and add LeetHub Sync to Chrome!
+1. **Install in Chrome Browser:**
+- Navigate to the Chrome Web Store and add LeetHub Sync to Chrome!
    
    https://chromewebstore.google.com/detail/leethub-sync/lgpbjdbepciblkallimlmjajfioghdde?hl=en-US&utm_source=ext_sidebar
 
-## Usage
-
-1. **Open the Extension:**
-    - Click on the LeetHub Sync icon in your Chrome toolbar.
-   
-3. **Configure Settings:**
+2. **Configure Settings:**
     - Click on the settings icon.
     - Generate a Github Token (https://github.com/settings/tokens)
     - Enter your GitHub Token and desired Github Repository URL in the settings modal.
     - Click "Update Configuration" to save your settings. <br><img src="images/settings_modal.png" alt="LeetHub Sync Settings Modal" width="220"/>
+
+## Usage
+
+1. **Open the Extension:**
+    - Click on the LeetHub Sync extension in your Chrome toolbar.
+   
+3. **Login to LeetCode:**
+    - Navigate to the LeetCode website.
+    - Ensure you are logged into your LeetCode account.
       
 4. **Sync Submissions:**
+    - Enable "Auto Sync" for automatic syncing when the LeetCode "submit" button is clicked!
     - Use the "Sync Last Submission" button to sync your latest LeetCode submission.
     - Use the "Sync Last 20 Submissions" button to sync your most recent 20 submissions.
-    - Enable "Auto Sync" for automatic syncing when the LeetCode "submit" button is clicked! <br><img src="images/main_GUI.png" alt="LeetHub Sync Main GUI" width="220"/>
+ <br><img src="images/main_GUI.png" alt="LeetHub Sync Main GUI" width="220"/>
       
 5. **View Status:** The popup will display success or error messages based on the sync status.
 
