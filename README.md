@@ -43,16 +43,16 @@
 
 ```plaintext
 .
+├── manifest.json
 ├── background.js
-├── config
 ├── images
 │   ├── lh_icon.png
 │   └── settings_icon.png
-├── manifest.json
 ├── popup
 │   ├── main.css
 │   └── main.html
 └── scripts
+    └── content.js
     └── popup.js
 ```
 
