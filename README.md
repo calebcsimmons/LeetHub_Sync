@@ -4,7 +4,7 @@
 
 ## Overview
 
-The **LeetCode Submission Syncer** is a Chrome extension that allows you to sync your LeetCode submissions to a specified GitHub repository. This extension simplifies the process of backing up your coding solutions by automating the retrieval and organization of your submissions.
+**LeetHub Sync** is a Chrome extension that allows you to sync your LeetCode submissions to a specified GitHub repository. This extension simplifies the process of backing up your coding solutions by automating the retrieval and organization of your submissions.
 
 ## Features
 
