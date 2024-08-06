@@ -54,3 +54,8 @@
 │   └── main.html
 └── scripts
     └── popup.js
+
+## RoadMap
+Planned Features and Fixes
+- Sync skipped message for already synced submissions.
+- Clear and concise error messages for troubleshooting.
