@@ -27,9 +27,3 @@ All notable changes to this project will be documented in this file.
 - Removed outdated images.
 - Resolved issues with message display in popup.
 - Resolved duplicate submission IDs.
-
-## [FUTURE] - TBD
-
-### Added
-- Sync skipped message for already synced submissions.
-- Clear and concise error messages for troubleshooting.
