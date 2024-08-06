@@ -1,6 +1,7 @@
-# LeetHub Sync Chrome Extension
+# LeetHub Sync Chrome Extension <img src="images/lh_icon.png" alt="LeetHub Sync" width="50"/>
 
-![LeetHub Sync](images/lh_icon.png)
+
+    <img src="images/main_GUI.png" alt="LeetHub Sync Main GUI" width="300"/>
 
 ## Overview
 
