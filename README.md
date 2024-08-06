@@ -54,6 +54,7 @@
 │   └── main.html
 └── scripts
     └── popup.js
+```
 
 ## RoadMap
 Planned Features and Fixes
