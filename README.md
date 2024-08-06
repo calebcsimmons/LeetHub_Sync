@@ -8,6 +8,7 @@
 
 ## Features
 
+- **Auto Sync:** Enable automated syncing upon each LeetCode submission.
 - **Sync Last Submission:** Quickly sync the most recent submission to your GitHub repository.
 - **Sync Last 20 Submissions:** Sync the last 20 submissions with a single click.
 - **Customizable Settings:** Configure your GitHub Token and Repository URL via the settings page.
