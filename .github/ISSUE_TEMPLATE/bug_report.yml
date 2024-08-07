@@ -3,6 +3,11 @@ description: Create a report for a bug
 title: "[Bug] "
 labels: bug
 body:
+  - type: markdown
+    attributes:
+      value: |
+        **Describe the Bug**
+        A clear and concise description of what the bug is.
   - type: textarea
     id: description
     attributes:
@@ -10,6 +15,11 @@ body:
       description: A clear and concise description of what the bug is.
       placeholder: Describe the bug here...
 
+  - type: markdown
+    attributes:
+      value: |
+        **Steps to Reproduce**
+        Steps to reproduce the behavior.
   - type: textarea
     id: steps
     attributes:
@@ -17,6 +27,11 @@ body:
       description: Steps to reproduce the behavior.
       placeholder: "1. Go to '...'\n2. Click on '....'\n3. Scroll down to '....'\n4. See error"
 
+  - type: markdown
+    attributes:
+      value: |
+        **Expected Behavior**
+        A clear and concise description of what you expected to happen.
   - type: textarea
     id: expected
     attributes:
@@ -24,34 +39,54 @@ body:
       description: A clear and concise description of what you expected to happen.
       placeholder: Describe the expected behavior here...
 
+  - type: markdown
+    attributes:
+      value: |
+        **Screenshots**
+        If applicable, add screenshots to help explain your problem. (Paste links to screenshots if necessary)
   - type: textarea
     id: screenshots
     attributes:
       label: Screenshots
-      description: If applicable, add screenshots to help explain your problem.
-      placeholder: Upload screenshots here...
+      description: If applicable, add links to screenshots to help explain your problem.
+      placeholder: Paste links to screenshots here...
 
+  - type: markdown
+    attributes:
+      value: |
+        **Operating System**
+        Choose your operating system.
   - type: dropdown
     id: os
     attributes:
       label: Operating System
-      description: Choose your operating system
+      description: Choose your operating system.
       options:
         - Windows
         - MacOS
         - Linux
         - Other
 
+  - type: markdown
+    attributes:
+      value: |
+        **LeetHub Sync Version**
+        Select the version of LeetHub Sync you are using.
   - type: dropdown
     id: version
     attributes:
       label: LH Version
-      description: LeetHub Sync Version Number
+      description: LeetHub Sync Version Number.
       options:
-        - 1.1
+        - 1.0
         - 1.1
         - 1.2
 
+  - type: markdown
+    attributes:
+      value: |
+        **Additional Context**
+        Add any other context about the problem here.
   - type: textarea
     id: additional_context
     attributes:
