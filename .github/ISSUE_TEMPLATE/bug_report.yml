@@ -25,11 +25,6 @@ body:
       description: A clear and concise description of what you expected to happen.
       placeholder: Describe the expected behavior here...
 
-  - type: markdown
-    attributes:
-      value: |
-        **Screenshots**
-        If applicable, add screenshots to help explain your problem. (Paste links to screenshots if necessary)
   - type: textarea
     id: screenshots
     attributes:
