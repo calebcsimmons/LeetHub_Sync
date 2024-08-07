@@ -1,64 +1,72 @@
 name: Enhancement Request
-description: Suggest an enhancement or new feature
+description: Request an enhancement or new feature
 title: "[Enhancement] "
 labels: enhancement
 body:
-  - type: markdown
-    attributes:
-      value: |
-        **Describe the enhancement**
-        A clear and concise description of what you want to happen.
+
   - type: textarea
     id: description
     attributes:
       label: Description
-      description: A clear and concise description of what you want to happen.
-      placeholder: Describe the enhancement here...
+      description: A clear and concise description of the enhancement or new feature.
+      placeholder: Describe the enhancement or feature here...
 
-  - type: markdown
-    attributes:
-      value: |
-        **Current behavior**
-        A clear and concise description of what happens currently.
   - type: textarea
-    id: current_behavior
+    id: motivation
     attributes:
-      label: Current Behavior
-      description: A clear and concise description of what happens currently.
-      placeholder: Describe the current behavior here...
+      label: Motivation
+      description: Explain why this enhancement or feature is needed.
+      placeholder: Describe the motivation behind the request here...
 
-  - type: markdown
-    attributes:
-      value: |
-        **Expected behavior**
-        A clear and concise description of what you expect to happen.
   - type: textarea
-    id: expected_behavior
+    id: benefits
     attributes:
-      label: Expected Behavior
-      description: A clear and concise description of what you expect to happen.
-      placeholder: Describe the expected behavior here...
+      label: Expected Benefits
+      description: What benefits or improvements do you expect from this enhancement?
+      placeholder: Describe the expected benefits here...
 
-  - type: markdown
-    attributes:
-      value: |
-        **Screenshots**
-        If applicable, add screenshots to help explain your suggestion.
   - type: textarea
-    id: screenshots
+    id: potential_implementation
     attributes:
-      label: Screenshots
-      description: Add screenshots to help explain your suggestion.
-      placeholder: Upload screenshots here...
+      label: Potential Implementation
+      description: Any ideas on how this enhancement could be implemented.
+      placeholder: Describe potential implementation ideas here...
 
-  - type: markdown
+  - type: dropdown
+    id: priority
     attributes:
-      value: |
-        **Additional context**
-        Add any other context or ideas about the enhancement here.
+      label: Priority
+      description: Indicate the priority level of this enhancement request.
+      options:
+        - Low
+        - Medium
+        - High
+        - Critical
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      description: Choose your operating system (if relevant).
+      options:
+        - Windows
+        - MacOS
+        - Linux
+        - Other
+
+  - type: dropdown
+    id: version
+    attributes:
+      label: LH Version
+      description: LeetHub Sync Version Number (if applicable).
+      options:
+        - 1.0
+        - 1.1
+        - 1.2
+
   - type: textarea
     id: additional_context
     attributes:
       label: Additional Context
-      description: Add any other context or ideas about the enhancement here.
+      description: Add any other context or relevant information here.
       placeholder: Add additional context here...
