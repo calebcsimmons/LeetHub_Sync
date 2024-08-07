@@ -18,11 +18,6 @@ body:
       description: Steps to reproduce the behavior.
       placeholder: "1. Go to '...'\n2. Click on '....'\n3. Scroll down to '....'\n4. See error"
 
-  - type: markdown
-    attributes:
-      value: |
-        **Expected Behavior**
-        A clear and concise description of what you expected to happen.
   - type: textarea
     id: expected
     attributes:
