@@ -53,11 +53,6 @@ body:
         - 1.1
         - 1.2
 
-  - type: markdown
-    attributes:
-      value: |
-        **Additional Context**
-        Add any other context about the problem here.
   - type: textarea
     id: additional_context
     attributes:
