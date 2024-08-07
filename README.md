@@ -71,4 +71,4 @@ See [Milestones](https://github.com/calebcsimmons/LeetHub_Sync/milestones) for e
 ## Contributing
 Want to contribute to LeetCode Sync? 
 
-See [CONTRIBUTING.yml](.github/CONTRIBUTING.yml) for instructions!
+See the [CONTRIBUTING](.github/CONTRIBUTING.md) doc for instructions!
