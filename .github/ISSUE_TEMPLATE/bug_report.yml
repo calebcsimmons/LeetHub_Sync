@@ -43,11 +43,6 @@ body:
         - Linux
         - Other
 
-  - type: markdown
-    attributes:
-      value: |
-        **LeetHub Sync Version**
-        Select the version of LeetHub Sync you are using.
   - type: dropdown
     id: version
     attributes:
