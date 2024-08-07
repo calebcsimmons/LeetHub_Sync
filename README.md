@@ -67,3 +67,8 @@
 Planned Features and Fixes
 
 See [Milestones](https://github.com/calebcsimmons/LeetHub_Sync/milestones) for enhancements and bug fixes that are planned for the next release!
+
+## Contributing
+Want to contribute to LeetCode Sync? 
+
+See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for instructions!
