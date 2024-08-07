@@ -10,11 +10,6 @@ body:
       description: A clear and concise description of what the bug is.
       placeholder: Describe the bug here...
 
-  - type: markdown
-    attributes:
-      value: |
-        **Steps to Reproduce**
-        Steps to reproduce the behavior.
   - type: textarea
     id: steps
     attributes:
@@ -22,11 +17,6 @@ body:
       description: Steps to reproduce the behavior.
       placeholder: "1. Go to '...'\n2. Click on '....'\n3. Scroll down to '....'\n4. See error"
 
-  - type: markdown
-    attributes:
-      value: |
-        **Expected Behavior**
-        A clear and concise description of what you expected to happen.
   - type: textarea
     id: expected
     attributes:
@@ -34,46 +24,34 @@ body:
       description: A clear and concise description of what you expected to happen.
       placeholder: Describe the expected behavior here...
 
-  - type: markdown
-    attributes:
-      value: |
-        **Screenshots**
-        If applicable, add screenshots to help explain your problem.
   - type: textarea
     id: screenshots
     attributes:
       label: Screenshots
-      description: Add screenshots to help explain your problem.
+      description: If applicable, add screenshots to help explain your problem.
       placeholder: Upload screenshots here...
 
-  - type: markdown
-    attributes:
-      value: |
-        **Desktop**
-        - OS: [e.g. Windows, MacOS]
-        - LH Version: [LeetHub Sync Version Number]
   - type: dropdown
     id: os
     attributes:
-      label: OS
-      description: Operating System
+      label: Operating System
+      description: Choose your operating system
       options:
         - Windows
         - MacOS
         - Linux
         - Other
-  - type: input
-    id: lh_version
+
+  - type: dropdown
+    id: version
     attributes:
       label: LH Version
       description: LeetHub Sync Version Number
-      placeholder: e.g. 1.0.0
+      options:
+        - 1.1
+        - 1.1
+        - 1.2
 
-  - type: markdown
-    attributes:
-      value: |
-        **Additional Context**
-        Add any other context about the problem here.
   - type: textarea
     id: additional_context
     attributes:
