@@ -5,14 +5,13 @@ Welcome to the LeetHub Sync setup guide! This document will walk you through the
 ## Table of Contents
 
 1. [Installation](#installation)
-   - [Step 1: Install the Extension](#step-1-install-the-extension)
+
 2. [Configuration](#configuration)
-   - [Step 1: Set Your GitHub Token](#step-1-set-your-github-token)
-   - [Step 2: Set Your GitHub Repository URL](#step-2-set-your-github-repository-url)
+
 3. [Using the Extension](#using-the-extension)
-   - [Syncing Your Last Submission](#syncing-your-last-submission)
-   - [Syncing the Last 20 Submissions](#syncing-the-last-20-submissions)
+
 4. [Troubleshooting](#troubleshooting)
+   
 5. [Support](#support)
 
 ---
