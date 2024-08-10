@@ -46,20 +46,22 @@
       
 5. **View Status:** The popup will display success or error messages based on the sync status.
 
-## File Structure
+## Source Code File Structure
 
 ```plaintext
 .
-├── manifest.json
-├── background.js
-├── images
+├── background
+│   └── background.js
+├── content
+│   └── content.js
+├── img
 │   ├── lh_icon.png
-│   └── settings_icon.png
-├── popup
-│   ├── main.css
-│   └── main.html
-└── scripts
-    └── content.js
+│   ├── main_GUI.png
+│   ├── settings_icon.png
+│   └── settings_modal.png
+└── popup
+    ├── main.css
+    ├── main.html
     └── popup.js
 ```
 
