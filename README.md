@@ -1,6 +1,6 @@
-# <img src="images/lh_icon.png" alt="LeetHub Sync" width="50" style="vertical-align: middle;"/> LeetHub Sync Chrome Extension
+# <img src="docs/img/lh_icon.png" alt="LeetHub Sync" width="50" style="vertical-align: middle;"/> LeetHub Sync Chrome Extension
 
-<img src="images/main_GUI.png" alt="LeetHub Sync Main GUI" width="500"/>
+<img src="docs/img/main_GUI.png" alt="LeetHub Sync Main GUI" width="500"/>
 
 
 ## Overview
@@ -27,7 +27,7 @@
     - Click on the settings icon.
     - Login to Github and generate a [Github Token](https://github.com/settings/tokens).
     - Enter your GitHub Token and desired Github Repository URL in the settings modal.
-    - Click "Update Configuration" to save your settings. <br><img src="images/settings_modal.png" alt="LeetHub Sync Settings Modal" width="220"/>
+    - Click "Update Configuration" to save your settings. <br><img src="docs/img/settings_modal.png" alt="LeetHub Sync Settings Modal" width="220"/>
 
 ## Usage
 
@@ -42,7 +42,7 @@
     - Enable "Auto Sync" for automatic syncing when the LeetCode "submit" button is clicked!
     - Use the "Sync Last Submission" button to sync your latest LeetCode submission.
     - Use the "Sync Last 20 Submissions" button to sync your most recent 20 submissions.
- <br><img src="images/main_GUI.png" alt="LeetHub Sync Main GUI" width="220"/>
+ <br><img src="docs/img/main_GUI.png alt="LeetHub Sync Main GUI" width="220"/>
       
 5. **View Status:** The popup will display success or error messages based on the sync status.
 
