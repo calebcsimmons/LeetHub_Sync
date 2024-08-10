@@ -52,12 +52,15 @@ After installing the extension, you'll need to configure it to sync your LeetCod
 
 ## Using the Extension
 
+### Auto Sync
+1. Enable the Auto Sync Feature.
+2. Anytime you click 'submit' on LeetCode's website, the submitted code will be automatically stored in the Github repository.
+
 ### Syncing Your Last Submission
 
-1. Solve a problem on [LeetCode](https://leetcode.com).
-2. After submission, click the LeetHub Sync icon in your Chrome toolbar.
-3. In the popup window, click **Sync Last Submission**.
-4. A success message will appear if the submission is successfully synced to your GitHub repository.
+1. Click the LeetHub Sync icon in your Chrome toolbar.
+2. In the popup window, click **Sync Last Submission**.
+3. A success message will appear if the submission is successfully synced to your GitHub repository.
 
 ### Syncing the Last 20 Submissions
 
@@ -74,8 +77,7 @@ If you encounter issues while using LeetHub Sync:
 1. **Check Your Token and Repository URL:** Ensure both are correctly entered in the settings.
 2. **Re-authenticate:** If your GitHub token has expired, generate a new one and update the configuration.
 3. **Permissions:** Ensure the extension has the necessary permissions by checking in `chrome://extensions/`.
-
-For more troubleshooting tips, visit our [FAQ](https://www.contributor-covenant.org/faq).
+4. **Additional:** Inspect the popup window, click **Sync Last Submission**, and view any errors in the console.
 
 ---
 
