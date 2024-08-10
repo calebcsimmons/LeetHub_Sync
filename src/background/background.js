@@ -143,16 +143,68 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
         if (githubToken && repoUrl) {
             // Save the updated configuration
-            chrome.storage.local.set({ GITHUB_TOKEN: githubToken, REPO_URL: repoUrl }, () => {
-                sendResponse({ status: 'success', data: 'Configuration updated successfully!' });
+            chrome.storage.local.set({ GITHUB_TOKEN: githubToken, REPO_URL: repoUrl }, async () => {
+                // Extract the owner and repo name from repoUrl
+                try {
+                    const urlParts = new URL(repoUrl);
+                    const pathParts = urlParts.pathname.split('/');
+                    const owner = pathParts[1];
+                    const repo = pathParts[2];
+
+                    console.log(`Owner: ${owner}, Repo: ${repo}`);
+
+                    // Check if the 'submissions' directory exists
+                    const checkDirResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/submissions`, {
+                        headers: {
+                            'Authorization': `token ${githubToken}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (checkDirResponse.status === 404) {
+                        console.log(`'submissions' directory does not exist. Creating directory.`);
+
+                        // Create the 'submissions' directory with a dummy file
+                        const createDirFileResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/submissions/initial.txt`, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `token ${githubToken}`,
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                message: 'Create submissions directory',
+                                content: btoa('') // Empty content to create a dummy file
+                            })
+                        });
+
+                        if (!createDirFileResponse.ok) {
+                            console.error(`Failed to create 'submissions' directory. Status code: ${createDirFileResponse.status}`);
+                            const errorData = await createDirFileResponse.json();
+                            console.error('Error details:', errorData);
+                            sendResponse({ status: 'error', message: 'Failed to create submissions directory.' });
+                            return true;
+                        }
+                    } else if (!checkDirResponse.ok) {
+                        console.error(`Failed to check 'submissions' directory. Status code: ${checkDirResponse.status}`);
+                        const errorData = await checkDirResponse.json();
+                        console.error('Error details:', errorData);
+                        sendResponse({ status: 'error', message: 'Failed to check submissions directory.' });
+                        return true;
+                    }
+
+                    sendResponse({ status: 'success', data: 'Configuration updated successfully!' });
+                } catch (error) {
+                    console.error('Error during GitHub configuration update:', error);
+                    sendResponse({ status: 'error', message: 'An error occurred while updating the configuration.' });
+                }
             });
         } else {
             sendResponse({ status: 'error', message: 'GitHub Token and Repo URL are required.' });
         }
-        return true; 
+        return true;
     } else {
         sendResponse({ status: 'error', message: 'Unknown action.' });
-        return true; 
+        return true;
     }
 });
 
