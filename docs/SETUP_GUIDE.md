@@ -22,7 +22,7 @@ Welcome to the LeetHub Sync setup guide! This document will walk you through the
 ### Step 1: Install the Extension
 
 1. Open Google Chrome and go to the [Chrome Web Store](https://chrome.google.com/webstore).
-2. In the search bar, type **LeetHub Sync** and press Enter. <br><img src="img/LeetHub_ChromePage.png alt="LeetHub Sync Chrome Web Page" width="220"/>
+2. In the search bar, type **LeetHub Sync** and press Enter. <br><img src="img/LeetHub_ChromePage.png" alt="LeetHub Sync Chrome Web Page" width="220"/>
 2b. Alternatively, the current link to the extension can be found [here](https://chromewebstore.google.com/detail/leethub-sync/lgpbjdbepciblkallimlmjajfioghdde?hl=en-US&utm_source=ext_sidebar).
 3. Find the LeetHub Sync extension in the search results and click **Add to Chrome**.
 4. Confirm the installation by clicking **Add Extension** in the pop-up.
