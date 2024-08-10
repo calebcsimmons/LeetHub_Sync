@@ -46,7 +46,6 @@ After installing the extension, you'll need to configure it to sync your LeetCod
 ### Step 2: Set Your GitHub Repository URL
 
 1. In the same settings modal, enter your GitHub repository URL in the designated field.
-   - Ensure that the URL does not end with `.git`. If it does, remove the `.git` part.
 2. Click **Update Configuration** to save your repository URL.
 
 ---
