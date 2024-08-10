@@ -19,7 +19,11 @@ All notable changes to this project will be documented in this file.
 - Various error and status messages for logger.
 - Settings validation for repository URL.
 - Auto hide feature of GitHub token.
-
+- Added SETUP_GUIDE.md
+- Added CODE_OF_CONDUCT.md
+- Added CONTRIBUTING.md
+- Added ability to submit Github Issues.
+  
 #### Fixed
 - Improved error handling for CORS issues.
 - Improved file structure.
@@ -27,3 +31,4 @@ All notable changes to this project will be documented in this file.
 - Removed outdated images.
 - Resolved issues with message display in popup.
 - Resolved duplicate submission IDs.
+- Resolved submissions folder not being created initially.
