@@ -1,4 +1,4 @@
-# <img src="docs/img/lh_icon.png" alt="LeetHub Sync" width="50" style="vertical-align: middle;"/> LeetHub Sync Chrome Extension
+# <img src="src/img/lh_icon.png" alt="LeetHub Sync" width="50" style="vertical-align: middle;"/> LeetHub Sync Chrome Extension
 
 <img src="docs/img/main_GUI.png" alt="LeetHub Sync Main GUI" width="500"/>
 
