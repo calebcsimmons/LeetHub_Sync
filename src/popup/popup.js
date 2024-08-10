@@ -86,7 +86,7 @@ const checkLeetCodeTab = (callback) => {
         }
 
         if (!url.hostname.endsWith('leetcode.com')) {
-            console.error('Not on LeetCode website:');
+            console.error('Not on LeetCode website');
             displayMessage('Please navigate to the LeetCode website.', 'red');
             return;
         }
