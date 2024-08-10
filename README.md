@@ -13,7 +13,7 @@
 - **Sync Last Submission:** Quickly sync the most recent submission to your GitHub repository.
 - **Sync Last 20 Submissions:** Sync the last 20 submissions with a single click.
 - **Customizable Settings:** Configure your GitHub Token and Repository URL via the settings page.
-- **Automatic File Organization:** Submissions are saved in directories based on the problem title, submission ID and programming language used.
+- **Automatic File Organization:** Submissions are saved to a 'submissions' directory and stored in sub folders based on the problem title, submission ID and programming language used.
 - **Error Handling:** Clear and concise error messages to help you troubleshoot issues.
 
 ## Installation and Setup
