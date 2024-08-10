@@ -34,7 +34,7 @@ This Code of Conduct applies both within project spaces and in public spaces whe
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project founder at calebcsimmons@gmail.com. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the [project founder](calebcsimmons@gmail.com). All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
 
 Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
 
@@ -44,4 +44,5 @@ This Code of Conduct is adapted from the Contributor Covenant, [version 2.1](htt
 
 Community Impact Guidelines were inspired by Mozilla’s code of conduct enforcement ladder.
 
-For answers to common questions about this code of conduct, see the (FAQ)[https://www.contributor-covenant.org/faq]. Translations are available [here](https://www.contributor-covenant.org/translations).
+For answers to common questions about this code of conduct, see the [FAQ](https://www.contributor-covenant.org/faq). 
+Translations are available [here](https://www.contributor-covenant.org/translations).
